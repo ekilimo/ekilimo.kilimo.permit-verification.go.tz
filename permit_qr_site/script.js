@@ -39,8 +39,9 @@ form.addEventListener('submit', function(e) {
     cropName
   });
 
-  const verificationURL = \`\${window.location.origin}\${window.location.pathname.replace(/[^/]*$/, '')}verification.html?\${params.toString()}\`;
-
+  //const verificationURL = \`\${window.location.origin}\${window.location.pathname.replace(/[^/]*$/, '')}verification.html?\${params.toString()}\`;
+  const verificationURL = `${window.location.origin}/ekilimo.kilimo.permit-verification.go.tz/verification.html?${params.toString()}`;
+  
   qrCodeContainer.innerHTML = '';
   qr = new QRCode(qrCodeContainer, {
     text: verificationURL,
