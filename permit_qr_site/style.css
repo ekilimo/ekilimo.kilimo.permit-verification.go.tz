@@ -1,7 +1,7 @@
 body {
   background-color: #333;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   text-align: center;
   padding: 30px;
 }
@@ -9,6 +9,41 @@ body {
 h1 {
   font-size: 22px;
   margin-bottom: 30px;
+}
+
+.permit-box {
+  background: #444;
+  padding: 30px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: left;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.permit-box p {
+  font-size: 16px;
+  margin: 18px 0;
+  border-bottom: 1px dotted #888;
+  padding-bottom: 8px;
+}
+
+.permit-box p:last-child {
+  border-bottom: none;
+}
+
+.permit-box span {
+  display: block;
+  font-weight: normal;
+  color: #ccc;
+}
+
+.permit-box strong {
+  display: block;
+  font-weight: bold;
+  color: #fff;
 }
 
 form {
@@ -50,26 +85,6 @@ button {
 
 button:hover {
   background: #218838;
-}
-
-.permit-box {
-  background: #444;
-  padding: 30px;
-  border-radius: 10px;
-  display: inline-block;
-  text-align: left;
-  max-width: 400px;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.permit-box p {
-  font-size: 18px;
-  margin: 8px 0;
-}
-
-.highlight {
-  font-weight: bold;
 }
 
 #qrcode {
