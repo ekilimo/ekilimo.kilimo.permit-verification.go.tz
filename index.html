@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Permit Verification - Generate QR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>JAMHURI YA MUUNGANO YA TANZANIA<br>WIZARA YA KILIMO</h1>
+
+  <form id="permitForm">
+    <label for="applicant">Applicant Name:</label>
+    <input type="text" id="applicant" required placeholder="e.g. JYF BROS ENTERPRISES LTD" />
+
+    <label for="docName">Document Name:</label>
+    <input type="text" id="docName" required placeholder="e.g. Export Permit" />
+
+    <label for="refNumber">Reference Number:</label>
+    <input type="text" id="refNumber" required placeholder="e.g. PRT-19247-2025" />
+
+    <label for="status">Current Status:</label>
+    <select id="status" required>
+      <option value="">-- Select Status --</option>
+      <option value="ACTIVE">ACTIVE</option>
+      <option value="INACTIVE">INACTIVE</option>
+    </select>
+
+    <label for="validFrom">Valid From:</label>
+    <input type="date" id="validFrom" required />
+
+    <label for="validTo">Valid To:</label>
+    <input type="date" id="validTo" required />
+
+    <label for="cropName">Crop/Product Name:</label>
+    <input type="text" id="cropName" placeholder="e.g. Sesamum Indicum" />
+
+    <button type="submit">Show Permit & Generate QR Code</button>
+  </form>
+
+  <div id="permitDisplay" style="display:none;" class="permit-box"></div>
+
+  <div id="qrcode"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
