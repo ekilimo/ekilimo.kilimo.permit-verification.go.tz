@@ -2,42 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Permit Verification Result</title>
+  <title>Permit Verification</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>JAMHURI YA MUUNGANO YA TANZANIA<br>WIZARA YA KILIMO</h1>
 
-  <div id="permitResult" class="permit-box"></div>
+  <div class="permit-box" id="permitDisplay">
+    <!-- Filled dynamically by JavaScript -->
+  </div>
 
   <script>
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param) || '';
-    }
+    // Parse URL params
+    const params = new URLSearchParams(window.location.search);
 
-    const applicant = getQueryParam('applicant');
-    const docName = getQueryParam('docName');
-    const refNumber = getQueryParam('refNumber');
-    const status = getQueryParam('status');
-    const validFrom = getQueryParam('validFrom');
-    const validTo = getQueryParam('validTo');
-    const cropName = getQueryParam('cropName');
+    // Get data or fallback
+    const applicant = params.get('applicant') || '(N/A)';
+    const docName = params.get('docName') || '(N/A)';
+    const refNumber = params.get('refNumber') || '(N/A)';
+    const status = params.get('status') || '(N/A)';
+    const cropName = params.get('cropName') || '(N/A)';
+
+    // Format dates
+    const validFrom = params.get('validFrom');
+    const validTo = params.get('validTo');
 
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const validFromStr = new Date(validFrom).toLocaleDateString('en-GB', options);
-    const validToStr = new Date(validTo).toLocaleDateString('en-GB', options);
+    const validFromStr = validFrom ? new Date(validFrom).toLocaleDateString('en-GB', options) : '(N/A)';
+    const validToStr = validTo ? new Date(validTo).toLocaleDateString('en-GB', options) : '(N/A)';
 
-    const resultBox = document.getElementById('permitResult');
-    resultBox.innerHTML = `
-      <p><span class="highlight">Applicant Name:</span> ${applicant}</p>
-      <p><span class="highlight">Document Name:</span> ${docName}</p>
-      <p><span class="highlight">Reference Number:</span> ${refNumber}</p>
-      <p><span class="highlight">Current Status:</span> ${status}</p>
-      <p><span class="highlight">Valid From:</span> ${validFromStr}</p>
-      <p><span class="highlight">Valid To:</span> ${validToStr}</p>
-      <p><span class="highlight">Crop/Product Name:</span> ${cropName || '(N/A)'}</p>
+    // Prepare HTML
+    const display = document.getElementById('permitDisplay');
+    display.innerHTML = `
+      <p><span>Applicant Name</span><strong>${applicant}</strong></p>
+      <p><span>Document Name</span><strong>${docName}</strong></p>
+      <p><span>Reference Number</span><strong>${refNumber}</strong></p>
+      <p><span>Valid From</span><strong>${validFromStr}</strong></p>
+      <p><span>Valid To</span><strong>${validToStr}</strong></p>
+      <p><span>Current Status</span><strong>${status}</strong></p>
+      <p><span>Crop/ Product Name</span><strong>${cropName}</strong></p>
     `;
   </script>
 
