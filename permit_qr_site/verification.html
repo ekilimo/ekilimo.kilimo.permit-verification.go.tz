@@ -7,42 +7,27 @@
 </head>
 <body>
 
-  <h1>JAMHURI YA MUUNGANO YA TANZANIA<br>WIZARA YA KILIMO</h1>
+  <div class="permit-container">
+    <h1>JAMHURI YA MUUNGANO YA TANZANIA</h1>
+    <h2>WIZARA YA KILIMO</h2>
+    <h3>Mamlaka ya Udhibiti wa Nafaka na Mazao Mchanganyiko (COPRA)</h3>
 
-  <div class="permit-box" id="permitDisplay">
-    <!-- Filled dynamically by JavaScript -->
+    <div class="permit-box">
+      <p><span class="label">Applicant Name</span><br><span id="applicant"></span></p>
+      <p><span class="label">Document Name</span><br><span id="docName"></span></p>
+      <p><span class="label">Reference Number</span><br><span id="refNumber"></span></p>
+      <p><span class="label">Current Status</span><br><span id="status"></span></p>
+      <p><span class="label">Crop/ Product Name</span><br><span id="cropName"></span></p>
+    </div>
   </div>
 
   <script>
-    // Parse URL params
     const params = new URLSearchParams(window.location.search);
-
-    // Get data or fallback
-    const applicant = params.get('applicant') || '(N/A)';
-    const docName = params.get('docName') || '(N/A)';
-    const refNumber = params.get('refNumber') || '(N/A)';
-    const status = params.get('status') || '(N/A)';
-    const cropName = params.get('cropName') || '(N/A)';
-
-    // Format dates
-    const validFrom = params.get('validFrom');
-    const validTo = params.get('validTo');
-
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const validFromStr = validFrom ? new Date(validFrom).toLocaleDateString('en-GB', options) : '(N/A)';
-    const validToStr = validTo ? new Date(validTo).toLocaleDateString('en-GB', options) : '(N/A)';
-
-    // Prepare HTML
-    const display = document.getElementById('permitDisplay');
-    display.innerHTML = `
-      <p><span>Applicant Name</span><strong>${applicant}</strong></p>
-      <p><span>Document Name</span><strong>${docName}</strong></p>
-      <p><span>Reference Number</span><strong>${refNumber}</strong></p>
-      <p><span>Valid From</span><strong>${validFromStr}</strong></p>
-      <p><span>Valid To</span><strong>${validToStr}</strong></p>
-      <p><span>Current Status</span><strong>${status}</strong></p>
-      <p><span>Crop/ Product Name</span><strong>${cropName}</strong></p>
-    `;
+    document.getElementById('applicant').textContent = params.get('applicant') || '';
+    document.getElementById('docName').textContent = params.get('docName') || '';
+    document.getElementById('refNumber').textContent = params.get('refNumber') || '';
+    document.getElementById('status').textContent = params.get('status') || '';
+    document.getElementById('cropName').textContent = params.get('cropName') || '';
   </script>
 
 </body>
