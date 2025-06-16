@@ -1,7 +1,6 @@
 const form = document.getElementById('permitForm');
 const display = document.getElementById('permitDisplay');
 const qrCodeContainer = document.getElementById('qrcode');
-let qr;
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -39,10 +38,10 @@ form.addEventListener('submit', function(e) {
     cropName
   });
 
-  const verificationURL = \`\${window.location.origin}\${window.location.pathname.replace(/[^/]*$/, '')}verification.html?\${params.toString()}\`;
+  const verificationURL = `${window.location.origin}${window.location.pathname.replace(/[^/]*$/, '')}verification.html?${params.toString()}`;
 
   qrCodeContainer.innerHTML = '';
-  qr = new QRCode(qrCodeContainer, {
+  new QRCode(qrCodeContainer, {
     text: verificationURL,
     width: 180,
     height: 180,
